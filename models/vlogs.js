@@ -5,9 +5,12 @@ const vlogSchema = new mongoose.Schema(
   {
     //we need to pass an argument because we need a constructor that takes an object
     //make sure you have an item with a type and required
-    class: { type: String, required: true },
+    title: { type: String, required: true },
+    date: { type: String, required: true },
     body: { type: String, required: true },
-    newContent: { type: Boolean, default: true }
+    newContent: { type: Boolean, default: true },
+    videolink: { type: String },
+    videopassword: { type: String }
   },
   { timestamps: true }
 )
@@ -20,6 +23,6 @@ console.log(vlogSchema.createdAt)
 // mongoose.Schema.newContent.Boolean.convertToTrue
 
 //always make sure you can export it
-const Log = mongoose.model('Vlog', vlogSchema)
+const Vlog = mongoose.model('Vlog', vlogSchema)
 
-module.exports = Log
+module.exports = Vlog

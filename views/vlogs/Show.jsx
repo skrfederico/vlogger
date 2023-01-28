@@ -18,7 +18,7 @@ console.log(vlog._id)
 
     return (
       <Layout>
-        <Heading> {vlog.class} Show Page </Heading>
+        <Heading> {vlog.title} Show Page </Heading>
         <div className="shadow-[inset_-12px_-8px_40px_#46464620]">
         <Text>
           {vlog.body}
