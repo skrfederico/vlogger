@@ -10,36 +10,44 @@ const Log = require("../../models/vlogs");
 class Show extends React.Component {
   render() {
     const vlog = this.props;
-console.log(vlog._id)
+// console.log(vlog._id)
     // const query = Log.find({});
 
     // Alternative syntax
     // const {vlog} = this.props
 
     return (
-      <Layout>
-        <Heading> {vlog.title} Show Page </Heading>
-        <div className="shadow-[inset_-12px_-8px_40px_#46464620]">
-        <Text>
-          {vlog.body}
-          </Text>
-           <Commented>
-           {vlog.newContent
-            ? "It was a good day"
-            : "It was not a good day..."} </Commented>
-            <Commented>
-            {"-"} {String(vlog.createdAt)}      
-            </Commented>
-       
-        <Button><form action={`/vlogs/${vlog._id}?_method=DELETE`} method="POST">
-        <input type="submit" value="DELETE"/>
-  </form></Button>
-  
-                <Button><form action='/vlogs' method="GET">
-                  <input type="submit" value="BACK" />
-                </form></Button>
-                </div>
-      </Layout>
+  <Layout>
+        <div className="bg-gray-10 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full">
+        <div>
+        <ol class="border-l-2 border-red-600">
+          <li>
+      <div class="flex flex-start items-center">
+        <div class="bg-red-600 w-4 h-4 flex items-center justify-center rounded-full -ml-2 mr-3 -mt-2"></div>
+      <Heading> {vlog.title} Show Page </Heading>
+      </div>
+      <div class="ml-6 mb-6 pb-6">
+      <p name="title" id="title" className="bg-gray-50"/>{vlog.title}
+      <p name="date" id="date" className="bg-gray-50"/>{vlog.date}
+      <div className="">
+                          <label for="description" className="block mt-2 text-sm font-medium text-gray-900 dark:text-black">Description</label>
+                          <textarea id="description" name="description" rows="6" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">{vlog.body}</textarea>                    
+                      </div>
+  <Commented>
+  {vlog.newContent
+    ? "This class has new content"
+    : "Revision class, no new content"} </Commented>
+    <Commented>
+    {"-"} {String(vlog.createdAt)}      
+    </Commented>
+    <a href="/vlogs"><button type="submit" class="inline-block px-4 py-1.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-black hover:shadow-lg focus:bg-black focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">vlogs</button></a>
+
+      </div>
+    </li>
+  </ol>
+  </div>
+        </div>
+        </Layout>      
     );
   }
 }

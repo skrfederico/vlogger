@@ -7,7 +7,7 @@ const vlogSchema = new mongoose.Schema(
     //make sure you have an item with a type and required
     title: { type: String, required: true },
     date: { type: String, required: true },
-    body: { type: String, required: true },
+    body: [String],
     newContent: { type: Boolean, default: true },
     videolink: { type: String },
     videopassword: { type: String }

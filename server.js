@@ -50,7 +50,6 @@ app.engine('jsx', require('jsx-view-engine').createEngine())
 
 // Controllers
 const vlogsController = require('./controllers/vlogController')
-// const foodLogsController = require('./controllers/foodLogController')
 
 const Vlog = require('./models/vlogs')
 
@@ -69,7 +68,6 @@ app.set('view engine', 'jsx')
 app.engine('jsx', require('jsx-view-engine').createEngine())
 
 app.use('/', vlogsController)
-// app.use('/foodlog', foodLogsController)
 
 //Listen on the port
 app.listen(PORT, () => {

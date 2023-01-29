@@ -14,8 +14,6 @@ router.get('/', (req, res) => {
 
 // Index - route
 router.get('/vlogs', (req, res) => {
-  //render a template
-  // res.send('Should send back all logs')
   Vlog.find({}, (error, allVlogs) => {
     res.render('vlogs/Index', {
       vlogs: allVlogs
@@ -23,7 +21,15 @@ router.get('/vlogs', (req, res) => {
   })
 })
 
-//put this above your Show route
+// Index for Search - route
+router.get('/search', (req, res) => {
+  Vlog.find({}, (error, allVlogs) => {
+    res.render('vlogs/Searchindex', {
+      vlogs: allVlogs
+    })
+  })
+})
+
 // New
 router.get('/vlogs/new', (req, res) => {
   res.render('vlogs/New')
@@ -33,14 +39,15 @@ router.get('/vlogs/new', (req, res) => {
 router.get('/vlogs/:id', (req, res) => {
   const { id } = req.params
 
-  Log.findById(id, (error, foundLog) => {
+  Vlog.findById(id, (error, foundVlog) => {
     if (error) {
       console.log(error)
     }
-    console.log(foundLog)
+    console.log(foundVlog)
     res.render('vlogs/Show', {
-      //log: foundLog
-      class: foundVlog.title,
+      //vlog: foundVlog
+      title: foundVlog.title,
+      date: foundVlog.date,
       body: foundVlog.body,
       createdAt: foundVlog.createdAt,
       _id: foundVlog._id
@@ -52,19 +59,20 @@ router.get('/vlogs/:id', (req, res) => {
 router.get('/vlogs/:id/edit', (req, res) => {
   const { id } = req.params
 
-  Log.findById(id, (err, foundVlog) => {
+  Vlog.findById(id, (err, foundVlog) => {
     res.render('vlogs/Edit', {
       _id: foundVlog._id,
-      class: foundVlog.class,
-      content: foundVlog.content,
-      body: foundVlog.body
+      title: foundVlog.title,
+      date: foundVlog.date,
+      body: foundVlog.body,
+      content: foundVlog.content
     })
   })
 })
 
 // Create
 router.post('/vlogs/', (req, res) => {
-  const { title, body } = req.body
+  const { title, date, body } = req.body
   // console.log(req.body)
   if (req.body.newContent === 'on') {
     //if checked, req.body.newContent is set to 'on'
@@ -74,27 +82,27 @@ router.post('/vlogs/', (req, res) => {
     req.body.newContent = false
   }
   Vlog.create(req.body, (error, createdVlog) => {
-    //Log.create({ title, body }, (error, createdLog) => {
+    //Vlog.create({ title, body }, (error, createdVlog) => {
     // console.log(req.body)
-    // console.log(createdLog)
+    console.log(createdVlog)
     // //console.error(error)
     // if (!err) {
-    //   console.log(createdLog)
+    //   console.log(createdVlog)
 
-    //   res.redirect(`/blog/${createdLog._id}`)
+    //   res.redirect(`/blog/${createdVlog._id}`)
     //   return
     // }
     res.redirect('/vlogs/') // sends to /logs get route
   })
 
-  // Log.create({ title, body }, (error, createdLogPost) => {
+  // Vlog.create({ title, body }, (error, createdVlogPost) => {
   //   // Blog.create({...req.body }, (error, createdBlogPost) => {
   //   if (error) {
   //     res.status(400).json({ error })
   //     return
   //   }
 
-  //   res.status(200).json(createdLogPost)
+  //   res.status(200).json(createdVlogPost)
   // })
 })
 
@@ -132,17 +140,12 @@ router.get('/', (req, res) => {
 
 // DELETE
 router.delete('/vlogs/:id', (req, res) => {
-  // const { id } = req.params
-  //res.send('Should delete one log')
-  // Log.findByIdAndDelete(id, (error, deletedLog) => {
   console.log(req.params.id)
   Vlog.findByIdAndDelete(req.params.id, (error, deletedVlog) => {
     // if (!error) {
     console.log(req.params.id)
     console.log('Deleted vlog post', { deletedVlog })
     res.redirect('/vlogs')
-    // console.log(deletedLog)
-    // return
   })
   // res.status(400).send('Try again later...')
 })
