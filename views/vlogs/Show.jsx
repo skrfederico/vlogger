@@ -18,7 +18,7 @@ class Show extends React.Component {
 
     return (
   <Layout>
-        <div className="bg-gray-10 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full">
+        <div className="bg-gray-200 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full">
         <div>
         <ol class="border-l-2 border-red-600">
           <li>
@@ -31,7 +31,7 @@ class Show extends React.Component {
       <p name="date" id="date" className="bg-gray-50"/>{vlog.date}
       <div className="">
                           <label for="description" className="block mt-2 text-sm font-medium text-gray-900 dark:text-black">Description</label>
-                          <textarea id="description" name="description" rows="6" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">{vlog.body}</textarea>                    
+                          <textarea id="description" name="description" rows="6" className="block p-2.5 w-full text-sm text-black bg-gray-100 rounded-lg border focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-200 dark:placeholder-gray-400 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500">{vlog.body}</textarea>                    
                       </div>
   <Commented>
   {vlog.newContent

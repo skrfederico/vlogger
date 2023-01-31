@@ -36,15 +36,6 @@ vlogs.sort((a, b) => new Date(a.date) - new Date(b.date));
   <p key={index} className="text-gray-700 mt-2 mb-4">{line}</p>
 ))}
 
-      {/* {vlog.body.map((line, index) => {
-       <p key={index} line={line} > </p>
-          })} */}
-
-  
-
-      {/* return this.texts[this.index].split(" ").join("<br/>") */}
-
-
       <Commented>
                 {vlog.newContent
                   ? "This class has new content"
