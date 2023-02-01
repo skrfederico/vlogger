@@ -1,12 +1,36 @@
 const express = require('express')
 const router = express.Router()
 
-/**
- * Models
- */
-const Vlog = require('../models/vlogs')
+// Data controller
+const dataController = require('./dataController')
+const viewController = require('./viewController')
 
-//ROUTES
+// /**
+//  * Models
+//  */
+// const Vlog = require('../models/vlogs')
+
+//
+// NEW routes
+// Index
+router.get('/', dataController.index, viewController.index)
+// New
+router.get('/new', viewController.newView)
+// Delete
+router.delete('/:id', dataController.destroy, viewController.redirectHome)
+// Update
+router.put('/:id', dataController.update, viewController.redirectShow)
+// Create
+router.post('/', dataController.create, viewController.redirectHome)
+// Edit
+router.get('/:id/edit', dataController.show, viewController.edit)
+// Show
+router.get('/:id', dataController.show, viewController.show)
+
+module.exports = router
+
+/**
+// OLD ROUTES
 //redirect
 router.get('/', (req, res) => {
   res.redirect('/vlogs')
@@ -94,16 +118,6 @@ router.post('/vlogs/', (req, res) => {
     // }
     res.redirect('/vlogs/') // sends to /logs get route
   })
-
-  // Vlog.create({ title, body }, (error, createdVlogPost) => {
-  //   // Blog.create({...req.body }, (error, createdBlogPost) => {
-  //   if (error) {
-  //     res.status(400).json({ error })
-  //     return
-  //   }
-
-  //   res.status(200).json(createdVlogPost)
-  // })
 })
 
 // Update - route
@@ -125,19 +139,6 @@ router.put('/vlogs/:id', (req, res) => {
   })
 })
 
-// router.get('/:id', (req, res) => {
-//   // this is a straight READ by Id
-//   res.send('Should send back one log')
-// })
-
-/** 
-router.get('/', (req, res) => {
-  // this / actually means /logs/
-  res.send('Should send back all blogs')
-  // -alternative- res.send(req.path)
-})
-*/
-
 // DELETE
 router.delete('/vlogs/:id', (req, res) => {
   console.log(req.params.id)
@@ -150,5 +151,4 @@ router.delete('/vlogs/:id', (req, res) => {
   // res.status(400).send('Try again later...')
 })
 // })
-
-module.exports = router
+**/
