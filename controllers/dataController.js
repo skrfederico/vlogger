@@ -16,9 +16,8 @@ const dataController = {
   },
 
   create(req, res, next) {
+    // const { title, date, body } = req.body
     console.log(req.body)
-    const { title, date, body } = req.body
-    // console.log(req.body)
     if (req.body.newContent === 'on') {
       //if checked, req.body.newContent is set to 'on'
       req.body.newContent = true
@@ -26,7 +25,8 @@ const dataController = {
       //if not checked, req.body.newContent is undefined
       req.body.newContent = false
     }
-    // Use Model to create Plog Document
+
+    // Use Model to create Vlog Document
     Vlog.create(req.body, (error, createdVlog) => {
       // Once created - respond to client
       if (error) {
@@ -53,7 +53,7 @@ const dataController = {
   },
 
   update(req, res, next) {
-    console.log(req.body.body)
+    // console.log(req.body.body)
     // UPDATE
     //res.send('Should update one log by id')
     if (req.body.newContent === 'on') {

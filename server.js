@@ -28,7 +28,9 @@ app.set('view engine', 'jsx')
 app.engine('jsx', require('jsx-view-engine').createEngine())
 
 //CONTROLLERS
-app.use('/', vlogController)
+app.use('/vlogs', vlogController)
+
+const Vlog = require('./models/vlogs')
 
 // We are just going to redirect to /vlogs if the user goes to our base route
 app.get('/', (req, res) => {
@@ -75,8 +77,6 @@ app.listen(PORT, () => {
 // // Allow express to use urlencoded
 // app.use(express.urlencoded({ extended: true }))
 // app.use(express.json())
-
-// const Vlog = require('./models/vlogs')
 
 // //use methodOverride.  We'll be adding a query parameter to our delete form named _method
 // app.use(methodOverride('_method'))

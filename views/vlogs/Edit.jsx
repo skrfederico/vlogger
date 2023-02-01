@@ -7,7 +7,7 @@ const Button = require("../components/Button");
 
 class Edit extends React.Component{
   render() {
-    const { title, date, body, _id, newContent } = this.props
+    const { title, date, body, _id, newContent } = this.props.vlog
     return (
 <Layout>
   <div>
