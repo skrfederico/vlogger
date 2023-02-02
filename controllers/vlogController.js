@@ -4,11 +4,28 @@ const router = express.Router()
 // Data controller
 const dataController = require('./dataController')
 const viewController = require('./viewController')
+const apiController = require('./apiController')
 
 // /**
 //  * Models
 //  */
 // const Vlog = require('../models/vlogs')
+
+//API ROUTES -
+//index
+router.get('/api', dataController.index, apiController.index)
+//show
+router.get('/api/:id', dataController.show, apiController.show)
+
+//delete
+router.delete('/api/:id', dataController.destroy, apiController.show)
+
+//update
+router.put('/api/:id', dataController.update, apiController.show)
+
+//create
+//post request doesn't need id after /api/
+router.post('/api/', dataController.create, apiController.show)
 
 //
 // NEW routes
