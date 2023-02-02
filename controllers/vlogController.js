@@ -6,24 +6,27 @@ const dataController = require('./dataController')
 const viewController = require('./viewController')
 const apiController = require('./apiController')
 
-// /**
-//  * Models
-//  */
-// const Vlog = require('../models/vlogs')
-
+router.use((req, res, next) => {
+  // console.log('session', req.session)
+  if (req.session.loggedIn) {
+    next()
+  } else {
+    res.redirect('/user/login')
+  }
+})
 //API ROUTES -
-//index
+//index (dataController.index)
 router.get('/api', dataController.index, apiController.index)
-//show
+//show (dataController.show)
 router.get('/api/:id', dataController.show, apiController.show)
 
-//delete
+//delete (dataController.destroy)
 router.delete('/api/:id', dataController.destroy, apiController.show)
 
-//update
+//update (dataController.update)
 router.put('/api/:id', dataController.update, apiController.show)
 
-//create
+//create (dataController.create)
 //post request doesn't need id after /api/
 router.post('/api/', dataController.create, apiController.show)
 

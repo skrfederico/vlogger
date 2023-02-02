@@ -20,6 +20,9 @@ vlogs.sort((a, b) => new Date(a.date) - new Date(b.date));
       <Layout>
       <div>
       <Heading>'Hedwig' Vlogs index page</Heading>
+      <div className="flex flex-row-reverse">
+                  <div className="p-8"><a href="/user/logout" className="inline-block px-4 py-1.5 bg-red-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-black hover:shadow-lg focus:bg-black-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out">logout</a></div>
+      </div>
           {this.props.vlogs.map((vlog, i) => {
             return (
               <ol className="border-l-2 border-red-600">

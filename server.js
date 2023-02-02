@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 8080
 
 // Controllers
 const vlogController = require('./controllers/vlogController')
+const userController = require('./controllers/user/userController')
 
 //connect to database
 const db = require('./db')
@@ -29,6 +30,7 @@ app.engine('jsx', require('jsx-view-engine').createEngine())
 
 //CONTROLLERS
 app.use('/vlogs', vlogController)
+app.use('/user', userController)
 
 const Vlog = require('./models/vlogs')
 
