@@ -32,6 +32,20 @@ app.engine('jsx', require('jsx-view-engine').createEngine())
 app.use('/vlogs', vlogController)
 app.use('/user', userController)
 
+// added for the search bar
+app.post('/search', (req, res) => {
+  const query = req.body.query
+  // const search = input.value
+  // console.log(search)
+  res.redirect(`/results?query=${query}`)
+})
+
+app.get('/results', (req, res) => {
+  const query = req.query.query
+  const result = Vlog.findAll({ body: { exist: { query } } })
+  console.log(result)
+})
+
 const Vlog = require('./models/vlogs')
 
 // We are just going to redirect to /vlogs if the user goes to our base route

@@ -9,7 +9,7 @@ const Log = require("../../models/vlogs");
 
 class Show extends React.Component {
   render() {
-    const vlog = this.props;
+    const vlog = this.props.vlog;
 // console.log(vlog._id)
     // const query = Log.find({});
 
@@ -31,7 +31,7 @@ class Show extends React.Component {
       <p name="date" id="date" className="bg-gray-50"/>{vlog.date}
       <div className="">
                           <label for="description" className="block mt-2 text-sm font-medium text-gray-900 dark:text-black">Description</label>
-                          <textarea id="description" name="description" rows="6" className="block p-2.5 w-full text-sm text-black bg-gray-100 rounded-lg border focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-200 dark:placeholder-gray-400 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500">{vlog.body}</textarea>                    
+                          <textarea id="description" name="description" rows="6" className="block p-2.5 w-full text-sm text-black bg-gray-100 rounded-lg border focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-200 dark:placeholder-gray-400 dark:text-black dark:focus:ring-gray-500 dark:focus:border-gray-500">{vlog.body}</textarea>                    
                       </div>
   <Commented>
   {vlog.newContent

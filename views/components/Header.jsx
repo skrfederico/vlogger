@@ -41,8 +41,8 @@ class Header extends React.Component {
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </span>
-          <form action="/vlogs/search" method="GET">
-          <input className="outline-none" type="text" placeholder="Search" value="" />
+          <form action="/vlogs/search" method="POST">
+          <input className="outline-none" type="text" name="query" placeholder="Search" value=""/>
           </form>
         </div>
       </div>
