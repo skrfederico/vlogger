@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 8080
 // Controllers
 const vlogController = require('./controllers/vlogController')
 const userController = require('./controllers/user/userController')
+const Vlog = require('./models/vlogs')
 
 //connect to database
 const db = require('./db')
@@ -32,21 +33,47 @@ app.engine('jsx', require('jsx-view-engine').createEngine())
 app.use('/vlogs', vlogController)
 app.use('/user', userController)
 
-// added for the search bar
-app.post('/search', (req, res) => {
-  const query = req.body.query
-  // const search = input.value
-  // console.log(search)
-  res.redirect(`/results?query=${query}`)
-})
+// // added for the search bar
+// app.post('/search', (req, res) => {
+//   const { query } = req.body.query
+//   // const search = input.value
+//   console.log(query)
+//   res.redirect(`/results?query=${query}`)
+// })
 
-app.get('/results', (req, res) => {
-  const query = req.query.query
-  const result = Vlog.findAll({ body: { exist: { query } } })
-  console.log(result)
-})
+//ORIGINAL CODE
+// app.get('/search', (req, res) => {
+//   const { query } = req.body.query
+//   const result = Vlog.find({ body: { query } }, function (err, docs) {
+//     if (err) {
+//       console.log(err)
+//     } else {
+//       console.log(docs)
+//     }
+//     function foundObjects(arr) {
+//     }
+//     foundObjects()
+//   })
+//   console.log(result)
+//   res.redirect(`/search?query=${query}`)
+// })
 
-const Vlog = require('./models/vlogs')
+app.get('/search', (req, res) => {
+  const { query } = req.query
+  Vlog.find({}, (err, docs) => {
+    const results = []
+    if (err) {
+      console.error(err)
+    } else {
+      for (let i = 0; i < docs.length; i++) {
+        if (docs[i].body['0'].includes(query)) {
+          results.push(docs[i])
+        }
+      }
+    }
+    res.render('vlogs/Searchindex', { vlogs: results })
+  })
+})
 
 // We are just going to redirect to /vlogs if the user goes to our base route
 app.get('/', (req, res) => {

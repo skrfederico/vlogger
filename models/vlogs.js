@@ -5,8 +5,8 @@ const vlogSchema = new mongoose.Schema(
   {
     //we need to pass an argument because we need a constructor that takes an object
     //make sure you have an item with a type and required
-    title: { type: String, required: true },
-    date: { type: String, required: true },
+    title: { type: String },
+    date: { type: String },
     body: [String],
     newContent: { type: Boolean, default: true },
     videolink: { type: String },

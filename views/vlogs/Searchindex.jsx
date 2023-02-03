@@ -5,17 +5,18 @@ const Text = require("../components/Text");
 const Commented = require("../components/Commented");
 const Button = require("../components/Button");
 
+
 class Searchindex extends React.Component {
   render() {
-    const { vlogs } = this.props;
-
-// Sort vlogs by date in descending order
-vlogs.sort((a, b) => new Date(a.date) - new Date(b.date));
 
     return (
+      
       <Layout>
       <div>
       <Heading>Vlogs Search index page</Heading>
+      <div className="flex flex-row">
+                  <div className="ml-6 mr-6 mb-6 pb-6"><a href="/user/logout" className="inline-block px-4 py-1.5 bg-red-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-black hover:shadow-lg focus:bg-black-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out">logout</a></div>
+      </div>
           {this.props.vlogs.map((vlog, i) => {
             return (
               <ol className="border-l-2 border-red-600">
@@ -27,10 +28,10 @@ vlogs.sort((a, b) => new Date(a.date) - new Date(b.date));
     <div className="ml-6 mb-6 pb-6">
       <a href="#!" className="text-red-600 hover:text-blue-700 focus:text-blue-800 duration-300 transition ease-in-out text-sm">{vlog.date}</a>
       
-      
-      {vlog.body.map((line, index) => (
-  <p key={index} className="text-gray-700 mt-2 mb-4">{line}</p>
-))}
+      <div className="">
+                          <label htmlFor="description" className="block mt-2 text-sm font-medium text-gray-900 dark:text-black">Description</label>
+                          <textarea id="description" name="description" rows="6" className="block p-2.5 w-full text-sm text-black bg-gray-100 rounded-lg border focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-200 dark:placeholder-gray-400 dark:text-black dark:focus:ring-gray-500 dark:focus:border-gray-500">{vlog.body}</textarea>                    
+                      </div>
 
       <Commented>
                 {vlog.newContent

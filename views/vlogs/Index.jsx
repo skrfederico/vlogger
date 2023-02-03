@@ -31,7 +31,7 @@ vlogs.sort((a, b) => new Date(a.date) - new Date(b.date));
       <a href={`/vlogs/${vlog.id}`} className="text-red-600 hover:text-blue-700 focus:text-blue-800 duration-300 transition ease-in-out text-sm">{vlog.date}</a>
       
       <div className="">
-                          <label for="description" className="block mt-2 text-sm font-medium text-gray-900 dark:text-black">Description</label>
+                          <label htmlFor="description" className="block mt-2 text-sm font-medium text-gray-900 dark:text-black">Description</label>
                           <textarea id="description" name="description" rows="6" className="block p-2.5 w-full text-sm text-black bg-gray-100 rounded-lg border focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-200 dark:placeholder-gray-400 dark:text-black dark:focus:ring-gray-500 dark:focus:border-gray-500">{vlog.body}</textarea>                    
                       </div>
 
