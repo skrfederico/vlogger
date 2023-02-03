@@ -48,7 +48,6 @@ class Header extends React.Component {
           <form action="/search" method="GET">
           <input className="outline-none" type="text" name="query" placeholder="Search" value=""/>
           </form>
-        
         </div>
       </div>
     </nav>

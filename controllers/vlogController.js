@@ -6,11 +6,6 @@ const dataController = require('./dataController')
 const viewController = require('./viewController')
 const apiController = require('./apiController')
 
-//TRYING TO MAKE A SEARCH BAR WORK
-// fetch("http://localhost:8080/vlogs/api")
-// .then(res => res.json())
-// .then(data => {})
-
 router.use((req, res, next) => {
   // console.log('session', req.session)
   if (req.session.loggedIn) {
@@ -20,20 +15,10 @@ router.use((req, res, next) => {
   }
 })
 
-// const searchTerm = `${req.query.search}&type=movie`;
-// const url = `https://www.omdbapi.com/?s=${searchTerm}&apikey=a6484142`;
-// try {
-//   const response = await axios.get(url);
-
-//   console.log("Response", response.data.Search);
-//   res.render("movie/SearchResult", { data: response.data.Search });
-// } catch (err) {
-//   console.log(err);
-// }
-
 //API ROUTES -
 //index (dataController.index)
 router.get('/api', dataController.index, apiController.index)
+
 //show (dataController.show)
 router.get('/api/:id', dataController.show, apiController.show)
 
@@ -51,9 +36,9 @@ router.post('/api/', dataController.create, apiController.show)
 // NEW routes
 // Index
 router.get('/', dataController.index, viewController.index)
-// // Search Index
+// Search Index
 router.get('/search', dataController.index, viewController.indexforsearch)
-// router.post('/search', dataController.create, viewController.redirectResults)
+
 // New
 router.get('/new', viewController.newView)
 // Delete

@@ -6,7 +6,7 @@ const app = express() // we are calling express here and assigning it to app
 const mongoose = require('mongoose')
 
 // Configs
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 3000
 
 // Controllers
 const vlogController = require('./controllers/vlogController')
@@ -33,31 +33,6 @@ app.engine('jsx', require('jsx-view-engine').createEngine())
 app.use('/vlogs', vlogController)
 app.use('/user', userController)
 
-// // added for the search bar
-// app.post('/search', (req, res) => {
-//   const { query } = req.body.query
-//   // const search = input.value
-//   console.log(query)
-//   res.redirect(`/results?query=${query}`)
-// })
-
-//ORIGINAL CODE
-// app.get('/search', (req, res) => {
-//   const { query } = req.body.query
-//   const result = Vlog.find({ body: { query } }, function (err, docs) {
-//     if (err) {
-//       console.log(err)
-//     } else {
-//       console.log(docs)
-//     }
-//     function foundObjects(arr) {
-//     }
-//     foundObjects()
-//   })
-//   console.log(result)
-//   res.redirect(`/search?query=${query}`)
-// })
-
 app.get('/search', (req, res) => {
   const { query } = req.query
   Vlog.find({}, (err, docs) => {
@@ -66,7 +41,7 @@ app.get('/search', (req, res) => {
       console.error(err)
     } else {
       for (let i = 0; i < docs.length; i++) {
-        if (docs[i].body['0'].includes(query)) {
+        if (docs[i].body['0'].toLowerCase().includes(query.toLowerCase())) {
           results.push(docs[i])
         }
       }

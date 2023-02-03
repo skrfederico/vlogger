@@ -47,6 +47,9 @@ class Show extends React.Component {
   </ol>
   </div>
         </div>
+        <div className="mt-4">
+      <Button> <div className="flex"><a href="/plogs" className="backBtn">Back</a></div></Button>
+      </div>
         </Layout>      
     );
   }

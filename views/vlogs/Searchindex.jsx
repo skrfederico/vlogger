@@ -14,8 +14,8 @@ class Searchindex extends React.Component {
       <Layout>
       <div>
       <Heading>Vlogs Search index page</Heading>
-      <div className="flex flex-row">
-                  <div className="ml-6 mr-6 mb-6 pb-6"><a href="/user/logout" className="inline-block px-4 py-1.5 bg-red-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-black hover:shadow-lg focus:bg-black-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out">logout</a></div>
+      <div className="flex flex-col">
+                  <div className="ml-6 mr-6 pb-6"><a href="/user/logout" className="inline-block px-4 py-1.5 bg-red-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-black hover:shadow-lg focus:bg-black-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out">logout</a></div>
       </div>
           {this.props.vlogs.map((vlog, i) => {
             return (
@@ -42,14 +42,14 @@ class Searchindex extends React.Component {
                   <div className="pr-2"><form action={`/vlogs/${vlog._id}/edit`} method="GET"> <button input type="submit" className="inline-block px-8 py-1.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-black hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-black active:shadow-lg transition duration-150 ease-in-out">Edit</button></form></div>
                   <div className="pr-2"><form action={`/vlogs/${vlog._id}?_method=DELETE`} method="POST"><button input type="submit" className="inline-block px-8 py-1.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-black hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-back active:shadow-lg transition duration-150 ease-in-out">Delete</button></form></div>  
                   </div>
-    </div>          
+    </div>                     
               </li>
               </ol>
+            
             );
           })
-          
           }
-  
+                <div className="ml-6 mr-6 mb-6 pb-6"><a href="/vlogs" className="inline-block px-4 py-1.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-black hover:shadow-lg focus:bg-black-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">back</a></div>
       </div>
       </Layout>
     );
