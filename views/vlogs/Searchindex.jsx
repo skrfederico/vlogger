@@ -26,7 +26,7 @@ class Searchindex extends React.Component {
       <h4 className="text-gray-800 font-semibold text-xl -mt-2">{vlog.title}</h4>
     </div>
     <div className="ml-6 mb-6 pb-6">
-      <a href="#!" className="text-red-600 hover:text-blue-700 focus:text-blue-800 duration-300 transition ease-in-out text-sm">{vlog.date}</a>
+      <a href={`/vlogs/${vlog.id}`} className="text-red-600 hover:text-blue-700 focus:text-blue-800 duration-300 transition ease-in-out text-sm">{vlog.date}</a>
       
       <div className="">
                           <label htmlFor="description" className="block mt-2 text-sm font-medium text-gray-900 dark:text-black">Description</label>

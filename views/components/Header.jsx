@@ -9,7 +9,7 @@ class Header extends React.Component {
     return (
       <nav className="bg-gray-500">
       <div className="container mx-auto py-4 flex justify-between items-center">
-           <a href="https://websailors.pro/" className="flex items-center">
+           <a href="https://generalassemb.ly/" className="flex items-center">
          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/General_Assembly_logo.svg/320px-General_Assembly_logo.svg.png" className="h-6 mr-3 sm:h-9" alt="General Assembly Logo"/></a>
         <h1 className="text-2xl font-bold text-gray-50"></h1>
         <div className="flex space-x-10">
